@@ -1,0 +1,24 @@
+extends layout
+block content
+	.row
+		.col-sm-12
+			table(class="table table-bordered table-hover table-striped")
+				thead
+					tr
+						th Sno.
+						th Name
+						th Contact
+						th Email
+						th Course Batches
+						th Created on
+				tbody
+					each student, i in students
+						tr
+							td= i+1
+							td 
+								a(href='/student/id/' + student.ahId)= student.name
+							td= student.contact
+							td= student.email
+							td 
+								a(href='/student/id/' + student.ahId) View
+							td= moment(student.creationDate).format('DD-MMM-YYYY h:mm:ss')

@@ -1,0 +1,13 @@
+extends layout
+block content
+    .row
+        form(name="add-course", method="post" action="/course/update/#{course.courseId}")
+            .col-md-6
+                .form-group
+                    label Title
+                    input.form-control(name='title', value='#{course.title}', type='text', placeholder='Course Title') 
+                .form-group
+                    label Details
+                    textarea.form-control(name="details", cols="40", rows="5") #{course.details}
+                .form-group
+                    button.btn.btn-primary(type='submit') Update Course

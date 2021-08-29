@@ -1,0 +1,56 @@
+extends layout
+block content
+    .row
+        .col-md-6
+            form(name="add-batch", method="post" action="/batch/update/#{batch.batchId}")
+                .form-group
+                    label Course Id
+                    input.form-control(name='courseId', type='text', value='#{batch.courseId}' ,placeholder='Exact Course Id', readonly='true')
+                .form-group
+                    label Title
+                    input.form-control(name='title', type='text', value='#{batch.title}', placeholder='Batch Title')
+                .form-group
+                    label Start Date
+                    #datetimepicker6.input-group.date
+                        - batch.start2 = moment(batch.start).format('YYYY-MM-DD')
+                        input.form-control(type='text', name='start', value='#{batch.start2}')
+                        span.input-group-addon
+                            span.glyphicon.glyphicon-calendar
+                .form-group
+                    label End Date
+                    #datetimepicker7.input-group.date
+                        - batch.end2 = moment(batch.end).format('YYYY-MM-DD')
+                        input.form-control(type='text', name='end', value='#{batch.end2}')
+                        span.input-group-addon
+                            span.glyphicon.glyphicon-calendar
+                script(type='text/javascript').
+                    window.onload = function () {
+                    $('#datetimepicker6').datetimepicker({
+                        format: 'YYYY-MM-DD'
+                    });
+                    $('#datetimepicker7').datetimepicker({
+                    useCurrent: false,
+                    format: 'YYYY-MM-DD'
+                    });
+                    $("#datetimepicker6").on("dp.change", function (e) {
+                    $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+                    });
+                    $("#datetimepicker7").on("dp.change", function (e) {
+                    $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+                    });
+                    };
+
+                .form-group
+                    label Seats
+                    input.form-control(name='seats', type='text', value='#{batch.seats}', placeholder='Seats for batch')
+                .form-group
+                    label Fee
+                    input.form-control(name='fee', type='text', value='#{batch.fee}', placeholder='Fee for batch')
+                .form-group
+                    label Faculty
+                    input.form-control(name='faculty', type='text', value='#{batch.faculty}', placeholder='Faculty for batch')
+                .form-group
+                    label Details
+                    textarea.form-control(name="details", cols="40", rows="5") #{batch.details}
+                .form-group
+                    button.btn.btn-primary(type='submit') Update Batch

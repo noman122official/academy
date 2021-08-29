@@ -1,0 +1,27 @@
+extends layout
+block content
+    
+    div(class="row")
+        h1(style="color:blue")= "Dashboard : "
+        div(class="col-sm-4")
+            a(href="/student/all" class="btn btn-primary")!= "View Students"
+            br
+            br
+            a(href="/batch/all" class="btn btn-primary")!= "View Batches"
+            br
+            br
+            a(href="/course/all" class="btn btn-primary")!= "View Courses"
+        div(class="col-sm-4")
+            a(href="/student/create" class="btn btn-primary")!= "Add new student"
+            br
+            br
+            a(href="/student/addtobatch" class="btn btn-primary")!= "Register existing student"
+            br
+            br
+            a(href="/student/addpayment" class="btn btn-primary")!= "Add student payment"
+        div(class="col-sm-4")
+            a(href="/course/create" class="btn btn-primary")!= "Create new course"
+            br
+            br
+            a(href="/batch/create" class="btn btn-primary")!= "Create new batch"
+        

@@ -1,0 +1,30 @@
+extends layout
+block content
+	.row
+		.col-sm-12
+			table(class="table table-bordered table-hover table-striped")
+				thead
+					tr
+						th Sno.
+						th Title
+						th Course
+						th Batch Id
+						th Start Date
+						th End Date
+						th Seats
+						th Fee
+						th Faculty
+				tbody
+					each batch, i in batches
+						tr
+							td #{i+1}
+							td 
+								a(href='/batch/id/' + batch.batchId) #{batch.title}
+							td 
+								a(href='/course/id/' + batch.courseId) #{batch.courseTitle}
+							td #{batch.batchId}
+							td= moment(batch.start).format('DD-MMM-YYYY')
+							td= moment(batch.end).format('DD-MMM-YYYY')
+							td #{batch.seats}
+							td #{batch.fee}
+							td #{batch.faculty}

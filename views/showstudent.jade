@@ -1,0 +1,86 @@
+extends layout
+block content
+	.row
+		.col-sm-12
+			a(href='/student/update/#{student.ahId}' class='btn btn-sm btn-info') Update Student
+			br
+			br
+			table(class="table table-bordered table-hover table-striped")
+				tr
+					td Adhoc Labs Id
+					td #{student.ahId}
+				tr
+					td Name
+					td #{student.name}
+				tr
+					td Contact
+					td #{student.contact}
+				tr
+					td Email
+					td #{student.email}
+				tr
+					td Profession
+					td #{student.profession}
+				tr
+					td College
+					td #{student.college}
+				tr
+					td Company
+					td #{student.company}
+				tr
+					td Address
+					td #{student.address}
+				tr
+					td City
+					td #{student.city}
+				tr
+					td Pincode
+					td #{student.pincode}
+				tr
+					td Father's Name
+					td #{student.fatherName}
+				tr
+					td Id Proof
+					td #{student.idProofType} : #{student.idProofNo}
+				tr
+					td Created On
+					td= moment(student.creationDate).format('DD-MMM-YYYY HH:mm:ss')
+				tr
+					td Last Modified
+					td= moment(student.lastModified).format('DD-MMM-YYYY HH:mm:ss')
+				tr
+					td Register in new batch
+					td 
+						a(href='/student/addtobatch?sid='+student.ahId) Register
+
+	.row
+		.col-sm-12
+			h3(style="color:blue")  Registered Batches
+			table(class="table table-bordered table-hover table-striped")
+				thead
+					tr
+						th Sno.
+						th Batch Title
+						th Course
+						th Start Date
+						th End Date
+						th Total Paid
+						th Amount
+						th View Details
+						th Add Payment
+				tbody
+					each batch, i in batches
+						tr
+							td #{i+1}
+							td 
+								a(href='/batch/id/' + batch.batchId) #{batch.batchTitle}
+							td 
+								a(href='/course/id/' + batch.courseId) #{batch.courseTitle}
+							td= moment(batch.start).format('DD-MMM-YYYY')
+							td= moment(batch.end).format('DD-MMM-YYYY')
+							td #{batch.totalPaid}
+							td #{batch.amount}
+							td 
+								a(href='/student/showpayments?studentId=' + batch.studentId + '&batchId=' +batch.batchId) View Details
+							td  
+								a(href='/student/addpayment?studentId=' + batch.studentId + '&batchId=' +batch.batchId) Accept Payment

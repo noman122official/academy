@@ -1,0 +1,46 @@
+extends layout
+block content
+    .row
+        form(name="add-student", method="post" action="/student/update/#{student.ahId}")
+            .col-md-6
+                .form-group
+                    label Student Name
+                    input.form-control(name='name', type='text', value='#{student.name}', placeholder='Student Fullname')
+                .form-group
+                    label Contact
+                    input.form-control(name='contact', type='text', value='#{student.contact}', placeholder='')
+                .form-group
+                    label Email
+                    input.form-control(name='email', type='email', value='#{student.email}', placeholder='')
+                .form-group
+                    label Profession
+                    input.form-control(name='profession', type='text', value='#{student.profession}', placeholder='')
+                .form-group
+                    label College
+                    input.form-control(name='college', type='text', value='#{student.college}', placeholder='')
+                .form-group
+                    label Company
+                    input.form-control(name='company', type='text', value='#{student.company}', placeholder='')
+                .form-group
+                    label Address
+                    textarea.form-control(name="address", cols="40", rows="3") #{student.address}
+                .form-group
+                    label City
+                    input.form-control(name='city', type='text', value='#{student.city}', placeholder='')
+                .form-group
+                    label Pincode
+                    input.form-control(name='pincode', type='text', value='#{student.pincode}', placeholder='')
+                .form-group
+                    label Father's Name
+                    input.form-control(name='fatherName', type='text', value='#{student.fatherName}', placeholder='')
+                .form-group
+                    label Remarks
+                    textarea.form-control(name="remarks", cols="40", rows="5") #{student.remarks}
+                .form-group
+                    label ID Proof Type
+                    input.form-control(name='idProofType', type='text', value='#{student.idProofType}', placeholder='Type')
+                .form-group
+                    label ID Proof No.
+                    input.form-control(name='idProofNo', type='text', value='#{student.idProofNo}', placeholder='Number')
+                .form-group
+                    button.btn.btn-primary(type='submit') Update Student

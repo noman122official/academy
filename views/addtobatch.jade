@@ -1,0 +1,52 @@
+extends layout
+block content
+    form(name="add-student-to-batch", method="post" action="/student/addtobatch")
+        .row
+            .col-md-6
+                .form-group
+                    label Student Id
+                    if(studentId)
+                        input.form-control(name='studentId', type='text', placeholder='Exact Student Id', value='#{studentId}')
+                    else
+                        input.form-control(name='studentId', type='text', placeholder='Exact Student Id')
+                .form-group
+                    label Batch Id
+                    input.form-control(name='batchId', type='text', placeholder='Exact Batch Id')
+                .form-group
+                    label Amount
+                    input.form-control(name='amount', type='number', placeholder='Fee Amount (Leave blank for default fee)')
+                .form-group
+                    label Start Date
+                    #datetimepicker6.input-group.date
+                        input.form-control(type='text', name='startDate', placeholder='(Leave blank for default)')
+                        span.input-group-addon
+                            span.glyphicon.glyphicon-calendar
+                .form-group
+                    label End Date
+                    #datetimepicker7.input-group.date
+                        input.form-control(type='text', name='endDate', placeholder='(Leave blank for default)')
+                        span.input-group-addon
+                            span.glyphicon.glyphicon-calendar
+                script(type='text/javascript').
+                    window.onload = function () {
+                    $('#datetimepicker6').datetimepicker({
+                        format: 'YYYY-MM-DD'
+                    });
+                    $('#datetimepicker7').datetimepicker({
+                    useCurrent: false,
+                    format: 'YYYY-MM-DD'
+                    });
+                    $("#datetimepicker6").on("dp.change", function (e) {
+                    $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+                    });
+                    $("#datetimepicker7").on("dp.change", function (e) {
+                    $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+                    });
+                    };
+                .form-group
+                    label Details
+                    textarea.form-control(name="details", cols="40", rows="5")
+                .form-group
+                    button.btn.btn-primary(type='submit') Add Student to Batch
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    button.btn.btn-warning(type='reset') Reset

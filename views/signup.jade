@@ -1,0 +1,22 @@
+extends layout
+block content
+    .row
+        .col-md-4.col-sm-offset-2
+            h1
+                span.fa.fa-sign-in
+                |  Signup
+        .col-md-4
+            form(action='/signup', method='post')
+                .form-group
+                    label Full Name
+                    input.form-control(type='text', name='fullname')
+                .form-group
+                    label Email
+                    input.form-control(type='text', name='email')
+                .form-group
+                    label Password
+                    input.form-control(type='password', name='password')
+                button.btn.btn-warning.btn-lg(type='submit') Signup
+            p
+                | Already have an account? 
+                a(href='/login') Login

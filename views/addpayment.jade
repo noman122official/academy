@@ -1,0 +1,45 @@
+extends layout
+block content
+    .row
+        form(name="add-student-payment", method="post" action="/student/addpayment")
+            .col-md-6
+                .form-group
+                    label Student Id
+                    if(studentId)
+                        input.form-control(name='studentId', type='text', placeholder='Exact Student Id', value='#{studentId}')
+                    else
+                        input.form-control(name='studentId', type='text', placeholder='Exact Student Id')
+                .form-group
+                    label Batch Id
+                    if(batchId)
+                        input.form-control(name='batchId', type='text', placeholder='Exact Batch Id', value='#{batchId}')
+                    else
+                        input.form-control(name='batchId', type='text', placeholder='Exact Batch Id')
+                .form-group
+                    label Ad Hoc Labs Receipt No.
+                    input.form-control(name='receiptno', type='text', placeholder='')
+                .form-group
+                    label Payment Date
+                    #datetimepicker1.input-group.date
+                        input.form-control(type='text', name='paymentDate')
+                        span.input-group-addon
+                            span.glyphicon.glyphicon-calendar
+                    script(type='text/javascript').
+                        window.onload = function () {
+                        $('#datetimepicker1').datetimepicker({
+                            format: 'YYYY-MM-DD HH:mm:ss'
+                        });
+                        };
+                .form-group
+                    label Amount Paid
+                    input.form-control(name='amountPaid', type='number', placeholder='Amount paid in Rs.')
+                .form-group
+                    label Payment Method
+                    input.form-control(name='method', type='text', placeholder='Payment Method')
+                .form-group
+                    label Details
+                    textarea.form-control(name="details", cols="40", rows="5")
+                .form-group
+                    button.btn.btn-primary(type='submit') Add Student Payment
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    button.btn.btn-warning(type='reset') Reset

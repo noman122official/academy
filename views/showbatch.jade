@@ -1,0 +1,42 @@
+extends layout
+block content
+	.row
+		.col-sm-12
+			a(href='/batch/update/#{batch.batchId}' class='btn btn-sm btn-info') Update Batch
+			br
+			br
+			table(class="table table-bordered table-hover table-striped")
+				tr
+					td Batch Id
+					td #{batch.batchId}
+				tr
+					td Title
+					td #{batch.title}
+				tr
+					td Course
+					td 
+						a(href="/course/id/#{batch.courseId}") #{batch.courseTitle}
+				tr
+					td Start Date
+					td= moment(batch.start).format('DD-MMM-YYYY')
+				tr
+					td End Date
+					td= moment(batch.end).format('DD-MMM-YYYY')
+				tr
+					td Seats
+					td #{batch.seats}
+				tr
+					td Fee
+					td Rs. #{batch.fee}
+				tr
+					td Faculty
+					td #{batch.faculty}
+				tr
+					td Details
+					td #{batch.details}
+				tr
+					td Created On
+					td= moment(batch.creationDate).format('DD-MMM-YYYY HH:mm:ss')
+				tr
+					td Last Modified
+					td= moment(batch.lastModified).format('DD-MMM-YYYY HH:mm:ss')

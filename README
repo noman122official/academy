@@ -1,0 +1,14 @@
+:::::::::::::::::::::::::::::::::::::::::::::
+Installation:
+*Unzip the file at desired location.
+*Use "npm install" command from cmd to install dependencies
+*In app.js, set mongo database path.
+
+:::::::::::::::::::::::::::::::::::::::::::::
+
+How to run:
+*Run mongod.
+*Start the app using "node app.js"
+
+:::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::

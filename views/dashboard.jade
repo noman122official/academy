@@ -1,0 +1,17 @@
+extends layout
+block content
+    .row
+        .col-sm-4
+            .list-group
+                a.list-group-item(href='/student/all') View Students
+                a.list-group-item(href='/batch/all') View Batches
+                a.list-group-item(href='/course/all') View Courses
+        .col-sm-4
+            .list-group
+                a.list-group-item(href='/student/create') Add new student
+                a.list-group-item(href='/student/addtobatch') Register existing student
+                a.list-group-item(href='/student/addpayment') Add student payment
+        .col-sm-4
+            .list-group
+                a.list-group-item(href='/course/create') Create new course
+                a.list-group-item(href='/batch/create') Create new batch

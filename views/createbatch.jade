@@ -1,0 +1,72 @@
+extends layout
+block content
+    .row
+        .col-md-6
+            form(name="add-batch", method="post" action="/batch/create")
+                .form-group
+                    label Course Id
+                    input.form-control(name='courseId', type='text', placeholder='Exact Course Id')
+                .form-group
+                    label Title
+                    input.form-control(name='title', type='text', placeholder='Batch Title')
+                .form-group
+                    label Start Date
+                    #datetimepicker6.input-group.date
+                        input.form-control(type='text', name='start')
+                        span.input-group-addon
+                            span.glyphicon.glyphicon-calendar
+                .form-group
+                    label End Date
+                    #datetimepicker7.input-group.date
+                        input.form-control(type='text', name='end')
+                        span.input-group-addon
+                            span.glyphicon.glyphicon-calendar
+                script(type='text/javascript').
+                    window.onload = function () {
+                    $('#datetimepicker6').datetimepicker({
+                        format: 'YYYY-MM-DD'
+                    });
+                    $('#datetimepicker7').datetimepicker({
+                    useCurrent: false,
+                    format: 'YYYY-MM-DD'
+                    });
+                    $("#datetimepicker6").on("dp.change", function (e) {
+                    $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+                    });
+                    $("#datetimepicker7").on("dp.change", function (e) {
+                    $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+                    });
+                    };
+
+                .form-group
+                    label Seats
+                    input.form-control(name='seats', type='text', placeholder='Seats for batch')
+                .form-group
+                    label Fee
+                    input.form-control(name='fee', type='text', placeholder='Fee for batch')
+                .form-group
+                    label Faculty
+                    input.form-control(name='faculty', type='text', placeholder='Faculty for batch')
+                .form-group
+                    label Details
+                    textarea.form-control(name="details", cols="40", rows="5")
+                .form-group
+                    button.btn.btn-primary(type='submit') Submit
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    button.btn.btn-warning(type='reset') Reset
+
+        .col-md-6
+            h3(style="color:blue")= "Present Courses" 
+            table(class="table table-bordered table-hover table-striped")
+                thead
+                    tr
+                        th Sno.
+                        th Name
+                        th Course ID
+                tbody
+                    each course, i in courses
+                        tr
+                            td #{i+1}
+                            td
+                                a(href='/course/id/' + course.courseId) #{course.title}
+                            td #{course.courseId}

@@ -1,0 +1,123 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='Adhoc Labs Portal')
+    meta(name='author', content='Shashank Dwivedi')
+    title AdHoc Labs Admin
+    // Bootstrap Core CSS
+    link(href='/css/bootstrap.min.css', rel='stylesheet')
+    link(href='/css/datetimepicker.css', rel='stylesheet')
+    // Custom CSS
+    link(href='/css/sb-admin.css', rel='stylesheet')
+    link(href='/stylesheets/style.css', rel='stylesheet')
+    // Custom Fonts
+    link(href='/font-awesome/css/font-awesome.min.css', rel='stylesheet', type='text/css')
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+      script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+  body
+    #wrapper
+      // Navigation
+      nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-ex1-collapse')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='/') Ad Hoc Labs Admin
+        // Top Menu Items
+        ul.nav.navbar-right.top-nav
+          li.dropdown
+            if(user)
+              a.dropdown-toggle(href='#', data-toggle='dropdown', aria-expanded='false')
+                i.fa.fa-user
+                |  #{user.fullname}  
+            if(!user)
+              a(href='/login')
+                i.fa.fa-user
+                |  Login/Register
+            ul.dropdown-menu
+              li
+                a(href='#')
+                  i.fa.fa-fw.fa-user
+                  |  Profile
+              li
+                a(href='#')
+                  i.fa.fa-fw.fa-envelope
+                  |  Inbox
+              li
+                a(href='#')
+                  i.fa.fa-fw.fa-gear
+                  |  Settings
+              li.divider
+              li
+                a(href='/logout')
+                  i.fa.fa-fw.fa-power-off
+                  |  Log Out
+
+        // Sidebar Menu Items - These collapse to the responsive navigation menu on small screens
+        .collapse.navbar-collapse.navbar-ex1-collapse
+          ul.nav.navbar-nav.side-nav
+            li
+              a(href='/dashboard')
+                i.fa.fa-fw.fa-dashboard
+                |  Dashboard
+            li
+              a(href='/student')
+                i.fa.fa-fw.fa-file
+                |  Student
+            li
+              a(href='/batch')
+                i.fa.fa-fw.fa-file
+                |  Batch
+            li
+              a(href='/course')
+                i.fa.fa-fw.fa-file
+                |  Course
+            //li
+              //a(href='javascript:;', data-toggle='collapse', data-target='#demo')
+                //i.fa.fa-fw.fa-arrows-v
+                //|  Dropdown 
+                //i.fa.fa-fw.fa-caret-down
+              //ul#demo.collapse
+                //li
+                  //a(href='#') Dropdown Item
+                //li
+                  //a(href='#') Dropdown Item
+        // /.navbar-collapse
+      #page-wrapper
+        .container-fluid
+          // Messages
+          .row
+              if(successMessages.length > 0)
+                .alert.alert-success
+                    strong Success!
+                    p 
+                    | #{successMessages}
+              if(errorMessages.length > 0)
+                .alert.alert-danger
+                    strong Error!
+                    p
+                    | #{errorMessages}
+          .row
+            .col-lg-12
+              h1.page-header
+                | #{pageHeading}
+                small #{pageSubHeading}
+          // /.row
+          block content
+        // /.container-fluid
+      // /#page-wrapper
+    // /#wrapper
+    // jQuery
+    script(src='/js/jquery-3.1.1.min.js')
+    // Bootstrap Core JavaScript
+    script(src='/js/bootstrap.min.js')
+    script(src="/js/moment.min.js")
+    script(src='/js/bootstrap-datetimepicker.min.js')

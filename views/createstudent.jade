@@ -1,0 +1,48 @@
+extends layout
+block content
+    .row
+        form(name="add-student", method="post" action="/student/create")
+            .col-md-6
+                .form-group
+                    label Student Name
+                    input.form-control(name='name', type='text', placeholder='Student Fullname')
+                .form-group
+                    label Contact
+                    input.form-control(name='contact', type='text', placeholder='')
+                .form-group
+                    label Email
+                    input.form-control(name='email', type='email', placeholder='')
+                .form-group
+                    label Profession
+                    input.form-control(name='profession', type='text', placeholder='')
+                .form-group
+                    label College
+                    input.form-control(name='college', type='text', placeholder='')
+                .form-group
+                    label Company
+                    input.form-control(name='company', type='text', placeholder='')
+                .form-group
+                    label Address
+                    textarea.form-control(name="address", cols="40", rows="3")
+                .form-group
+                    label City
+                    input.form-control(name='city', type='text', placeholder='')
+                .form-group
+                    label Pincode
+                    input.form-control(name='pincode', type='text', placeholder='')
+                .form-group
+                    label Father's Name
+                    input.form-control(name='fatherName', type='text', placeholder='')
+                .form-group
+                    label Remarks
+                    textarea.form-control(name="remarks", cols="40", rows="5")
+                .form-group
+                    label ID Proof Type
+                    input.form-control(name='idProofType', type='text', placeholder='Type')
+                .form-group
+                    label ID Proof No.
+                    input.form-control(name='idProofNo', type='text', placeholder='Number')
+                .form-group
+                    button.btn.btn-primary(type='submit') Submit
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    button.btn.btn-warning(type='reset') Reset

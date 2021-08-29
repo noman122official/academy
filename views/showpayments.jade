@@ -1,0 +1,64 @@
+extends layout
+block content
+	.row
+		.col-sm-12
+			table(class="table table-bordered table-hover table-striped")
+				tr
+					td Student ID
+					td #{paymentData.studentId}
+				tr
+					td Batch
+					td
+						a(href="/batch/id/#{paymentData.batchId}")= paymentData.batchTitle
+				tr
+					td Course
+					td 
+						a(href="/course/id/#{paymentData.courseId}")= paymentData.courseTitle
+				tr
+					td Start Date
+					td= moment(paymentData.start).format('DD-MMM-YYYY')
+				tr
+					td End Date
+					td= moment(paymentData.end).format('DD-MMM-YYYY')
+				tr
+					td Total Paid
+					td Rs. #{paymentData.totalPaid}
+				tr
+					td Details
+					td #{paymentData.details}
+				tr
+					td Created On
+					td= moment(paymentData.creationDate).format('DD-MMM-YYYY h:mm:ss')
+				tr
+					td Last Modified
+					td= moment(paymentData.lastModified).format('DD-MMM-YYYY h:mm:ss')
+
+	
+	.row
+		.col-sm-12
+			h3(style="color:blue")= Payments 
+			if paymentData.paymentDetails
+				table(class="table table-bordered table-hover table-striped")
+					thead
+						tr
+							th Sno.
+							th Payment Id
+							th AdHoc Receipt No.
+							th Method
+							th Amount Paid
+							th Pamyment Date
+							th Details
+							th creationDate
+					tbody
+						each pD, i in paymentData.paymentDetails
+							tr
+								td #{i+1}
+								td #{pD.ahPaymentId}
+								td #{pD.ahReceiptNo}
+								td #{pD.method}
+								td #{pD.amountPaid}
+								td= moment(pD.paymentDate).format('DD-MMM-YYYY HH:mm:ss')
+								td #{pD.details}
+								td= moment(pD.creationDate).format('DD-MMM-YYYY')
+			else
+				p No payments made.
