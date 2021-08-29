@@ -1,2 +1,2 @@
 # InovisionAcademy
-This is just a practise project deeveloped in nodejs to keep the track of student and there performance and there courses
+This is just a practise project developed in nodejs to keep the track of student and there performance and there courses
